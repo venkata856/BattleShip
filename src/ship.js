@@ -1,3 +1,5 @@
+import { take } from "lodash";
+
 export default function ship(id,length,isVertical=false,startCoordinates){
 
 
@@ -11,11 +13,17 @@ export default function ship(id,length,isVertical=false,startCoordinates){
     
     const isSunk = ()=>hitLocations.every((element)=> element==='x')
 
-    const takenCells = (startCoordinates)=>{
+    const takenCells = (startPoint=startCoordinates)=>{
 
-        takenCells = [];
+        let cells = [];
+        for(let i = 0; i < length; i++){
+            if(isVertical)
+            cells.push((Number(startPoint)+i)*15);
+            else
+            cells.push(Number(startPoint)+i);
+        }
 
-        return takenCells
+        return cells
     }
     return{
         id,

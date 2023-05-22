@@ -36,4 +36,15 @@ describe("ship testing function ", ()=> {
 
         expect(carrier.isSunk()).toBeFalsy();
     })
+
+    test("check ship taken slots ",()=>{
+        const guard = ship(1,4,false,3);
+        expect(guard.takenCells()).toEqual([3,4,5,6]);
+    })
+
+    test("check ship taken slots ",()=>{
+        const carrier = ship(1,3,true,2);
+        const val = carrier.takenCells();
+        expect(val).toEqual([30,45,60]);
+    })
 })
