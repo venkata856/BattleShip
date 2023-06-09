@@ -1,40 +1,28 @@
-import { take } from "lodash";
 
-export default function ship(id,length,isVertical=false,startCoordinates){
+export default function ship(id,name, length){
 
-
-    const hitLocations = Array.from('o'.repeat(5));
-
-    const hit = (position)=>{
-
-        hitLocations[position]='x'
-
-    }
-    
-    const isSunk = ()=>hitLocations.every((element)=> element==='x')
-
-    const takenCells = (startPoint=startCoordinates)=>{
-
-        let cells = [];
-        for(let i = 0; i < length; i++){
-            if(isVertical)
-            cells.push((Number(startPoint)+i)*15);
-            else
-            cells.push(Number(startPoint)+i);
-        }
-
-        return cells
-    }
+    let start
+    let isHorizontal
     return{
-        id,
         length,
-        hit,
-        isVertical,
-        isSunk,
-        hitLocations,
-        takenCells,
-        startCoordinates
-  
+        name,
+        id,
+        setStart(s){
+            start = s;
+        },
+
+        getStartCoOrdinates(){
+            return start;
+        },
+        setAlignment(align){
+
+            isHorizontal = align;
+        },
+        getAlignment(){
+
+            return isHorizontal;
+        },
+
     };
 
 }
